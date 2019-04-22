@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88229B882268C89D00746E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88229B872268C89D00746E35 /* AppDelegate.swift */; };
-		88229B8A2268C89D00746E35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88229B892268C89D00746E35 /* ViewController.swift */; };
+		88229B8A2268C89D00746E35 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88229B892268C89D00746E35 /* TopStoriesViewController.swift */; };
 		88229B8D2268C89D00746E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88229B8B2268C89D00746E35 /* Main.storyboard */; };
 		88229B8F2268C8A100746E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88229B8E2268C8A100746E35 /* Assets.xcassets */; };
 		88229B922268C8A100746E35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88229B902268C8A100746E35 /* LaunchScreen.storyboard */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		88229B842268C89D00746E35 /* FWCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88229B872268C89D00746E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88229B892268C89D00746E35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		88229B892268C89D00746E35 /* TopStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesViewController.swift; sourceTree = "<group>"; };
 		88229B8C2268C89D00746E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88229B8E2268C8A100746E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88229B912268C8A100746E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,9 +66,9 @@
 		88229B862268C89D00746E35 /* FWCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				88229B9F226B76F100746E35 /* Model */,
 				88229BA7226CCD9600746E35 /* View */,
 				88229BA2226B871900746E35 /* ViewModel */,
-				88229B9F226B76F100746E35 /* Model */,
 				88229BA8226CCDC400746E35 /* Client */,
 				88229BA9226CCDEB00746E35 /* ViewController */,
 				88229B8B2268C89D00746E35 /* Main.storyboard */,
@@ -117,7 +117,7 @@
 		88229BA9226CCDEB00746E35 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				88229B892268C89D00746E35 /* ViewController.swift */,
+				88229B892268C89D00746E35 /* TopStoriesViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88229B8A2268C89D00746E35 /* ViewController.swift in Sources */,
+				88229B8A2268C89D00746E35 /* TopStoriesViewController.swift in Sources */,
 				88229B9C226B6FCC00746E35 /* RedditStory.swift in Sources */,
 				88229B9E226B75D100746E35 /* RedditResponse.swift in Sources */,
 				88229BA4226C4F3700746E35 /* StoryCell.swift in Sources */,

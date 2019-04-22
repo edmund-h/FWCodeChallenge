@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Top Stories View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FWCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TopStoriesViewController" customModule="FWCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,30 +22,32 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="utilityCell" id="DF1-bP-gqC" customClass="UtilityCell" customModule="FWCodeChallenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="utilityCell" id="DF1-bP-gqC" customClass="UtilityCell" customModule="FWCodeChallenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DF1-bP-gqC" id="efU-rY-6hT">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrw-tb-ist">
-                                                    <rect key="frame" x="184.5" y="11.5" width="45" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrw-tb-ist">
+                                                    <rect key="frame" x="40" y="16" width="334" height="12"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Lrw-tb-ist" firstAttribute="centerX" secondItem="efU-rY-6hT" secondAttribute="centerX" id="XJN-JV-Ce6"/>
-                                                <constraint firstItem="Lrw-tb-ist" firstAttribute="centerY" secondItem="efU-rY-6hT" secondAttribute="centerY" id="g0t-jM-efo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lrw-tb-ist" secondAttribute="bottom" constant="5" id="NnF-fL-VGm"/>
+                                                <constraint firstItem="Lrw-tb-ist" firstAttribute="top" secondItem="efU-rY-6hT" secondAttribute="topMargin" constant="5" id="fds-us-M6e"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Lrw-tb-ist" secondAttribute="trailing" constant="20" id="j8p-Yd-p4J"/>
+                                                <constraint firstItem="Lrw-tb-ist" firstAttribute="leading" secondItem="efU-rY-6hT" secondAttribute="leadingMargin" constant="20" id="ja2-l6-jIW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="Lrw-tb-ist" id="9fp-Qx-02x"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="120" id="2yk-sg-9jI" customClass="StoryCell" customModule="FWCodeChallenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="120" id="2yk-sg-9jI" customClass="StoryCell" customModule="FWCodeChallenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yk-sg-9jI" id="iGr-uk-0UN">
@@ -65,26 +67,40 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="st4-j4-Kct">
-                                                    <rect key="frame" x="20" y="30" width="75" height="60"/>
+                                                    <rect key="frame" x="20" y="10" width="75" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="LCk-rf-VAA"/>
                                                         <constraint firstAttribute="width" secondItem="st4-j4-Kct" secondAttribute="height" multiplier="10:8" id="sI2-BB-CtN"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSl-Fl-7pz">
+                                                    <rect key="frame" x="37.5" y="75" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="dSl-Fl-7pz" secondAttribute="height" multiplier="1:1" id="LPI-Hb-hHK"/>
+                                                        <constraint firstAttribute="width" constant="40" id="lOx-A9-DVQ"/>
+                                                    </constraints>
+                                                    <state key="normal" image="favorite_add-512"/>
+                                                    <connections>
+                                                        <action selector="favoriteTapped:" destination="2yk-sg-9jI" eventType="touchUpInside" id="Lnb-Wu-h6r"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Cd5-Bz-YCY" firstAttribute="top" secondItem="wbo-7x-GbN" secondAttribute="bottom" constant="10" id="1Mb-NY-7O5"/>
                                                 <constraint firstItem="Cd5-Bz-YCY" firstAttribute="leading" secondItem="st4-j4-Kct" secondAttribute="trailing" constant="20" id="7Dd-NL-tGz"/>
-                                                <constraint firstItem="st4-j4-Kct" firstAttribute="centerY" secondItem="iGr-uk-0UN" secondAttribute="centerY" id="7g3-zR-vLH"/>
+                                                <constraint firstItem="st4-j4-Kct" firstAttribute="centerY" secondItem="iGr-uk-0UN" secondAttribute="centerY" constant="-20" id="7g3-zR-vLH"/>
                                                 <constraint firstItem="wbo-7x-GbN" firstAttribute="leading" secondItem="st4-j4-Kct" secondAttribute="trailing" constant="20" id="7tP-z8-lqr"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cd5-Bz-YCY" secondAttribute="trailing" id="EVE-MW-fgM"/>
                                                 <constraint firstItem="st4-j4-Kct" firstAttribute="leading" secondItem="iGr-uk-0UN" secondAttribute="leading" constant="20" id="NL1-W4-agp"/>
                                                 <constraint firstAttribute="bottom" secondItem="Cd5-Bz-YCY" secondAttribute="bottom" constant="20" id="ZTK-wr-8B1"/>
                                                 <constraint firstAttribute="trailing" secondItem="wbo-7x-GbN" secondAttribute="trailing" constant="20" id="ZjW-tL-rxw"/>
+                                                <constraint firstItem="dSl-Fl-7pz" firstAttribute="top" secondItem="st4-j4-Kct" secondAttribute="bottom" constant="5" id="cMs-bf-f4R"/>
                                                 <constraint firstItem="wbo-7x-GbN" firstAttribute="top" secondItem="iGr-uk-0UN" secondAttribute="top" constant="20" id="poj-Ba-ksx"/>
+                                                <constraint firstItem="dSl-Fl-7pz" firstAttribute="centerX" secondItem="st4-j4-Kct" secondAttribute="centerX" id="vjO-kp-EAD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="dSl-Fl-7pz" id="0Iz-Yg-3sO"/>
                                             <outlet property="infoLabel" destination="Cd5-Bz-YCY" id="IZO-QI-cUg"/>
                                             <outlet property="storyImage" destination="st4-j4-Kct" id="yGQ-F7-6jC"/>
                                             <outlet property="titleLabel" destination="wbo-7x-GbN" id="cas-kP-vNW"/>
@@ -115,4 +131,7 @@
             <point key="canvasLocation" x="47.826086956521742" y="32.8125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite_add-512" width="170.66667175292969" height="170.66667175292969"/>
+    </resources>
 </document>

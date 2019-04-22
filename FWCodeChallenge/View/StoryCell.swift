@@ -12,6 +12,7 @@ class StoryCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var storyImage: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var story: RedditStory? {
         didSet {
@@ -21,7 +22,17 @@ class StoryCell: UITableViewCell {
             
             titleLabel.text = story.title
             infoLabel.text = "posted by \(story.author), \(story.daysAgo). \(story.numComments) comments."
+            favoriteButton.isHidden = story.thumbnail == nil
         }
     }
     
+    static let loveNotification = Notification.Name.init(rawValue: "LoveTapped")
+    
+    @IBAction func favoriteTapped(_ sender: Any) {
+        guard let url = story?.thumbnail else {
+            return
+        }
+        
+        NotificationCenter.default.post(name: StoryCell.loveNotification , object: nil, userInfo: [StoryCell.loveNotification:url])
+    }
 }

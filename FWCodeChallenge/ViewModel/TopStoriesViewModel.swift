@@ -8,6 +8,8 @@
 
 import UIKit
 
+// This is one of my first attempts at an actual ViewModel and I had a lot of fun implementing it. It's easy to see why this paradigm has so many devotees.
+
 class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     
     unowned var delegate: TopStoriesDelegate
@@ -16,6 +18,8 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     var responses: [RedditResponseData] = []
     var images: [String: UIImage] = [:]
     var lastUpdate: Date?
+    
+    let loadingStoriesText = "Loading your stories... if this takes a long time please check your connection."
     
     var storyTableRowCount: Int {
         return stories.count
@@ -28,6 +32,7 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     }
     
     func getNewStories() {
+        // I understand there is some contention about making web calls inside viewModels. Apparently Microsoft endorses using them in the viewModel and this could easily be moved out of the ViewModel and have the method passed in through the viewModel property by making handleResponseData public.
         RedditClient.getTopStories(then: handleResponseData(_:))
     }
     
@@ -44,6 +49,7 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     func getImage(for urlString: String)-> UIImage? {
         let image = images[urlString]
         if image == nil {
+            //Self is passed in as a delegate for the download. See URLSessionDelegate.
             RedditClient.downloadImage(from: urlString, for: self)
         }
         return image
@@ -74,7 +80,11 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     }
     
     func labelFor(indexPath: IndexPath)-> String {
-        guard indexPath.section == 0 else { return "Tap here to get more top stories!"}
+        guard indexPath.section == 0 else {
+            var loadText = stories.count == 0 ? loadingStoriesText : "Tap here to get more top stories!"
+            return loadText
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .long
@@ -111,8 +121,8 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
                     return
             }
             
-            images[url.absoluteString] = image
             DispatchQueue.main.async {
+                self.images[url.absoluteString] = image
                 self.delegate.gotImage(image, for: url.absoluteString)
             }
         } catch {
@@ -123,6 +133,8 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
 
 protocol TopStoriesDelegate: class {
     
+    //I felt the protocol/delegate relationship went really well with the MVVM architecture. I set the delegate to unowned to prevent tight coupling.
     func gotNewStories(_ redditStories: [RedditStory])
     func gotImage(_ image: UIImage, for url: String)
+    
 }
