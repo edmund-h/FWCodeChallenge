@@ -33,6 +33,7 @@ class StoryCell: UITableViewCell {
             return
         }
         
+        // I like to use Notification Names as keys for Notification User Info because they are a convenient way to reduce magic strings, which I think is important to clean code.
         NotificationCenter.default.post(name: StoryCell.loveNotification , object: nil, userInfo: [StoryCell.loveNotification:url])
     }
 }

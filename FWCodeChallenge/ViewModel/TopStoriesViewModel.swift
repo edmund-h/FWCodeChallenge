@@ -49,7 +49,7 @@ class TopStoriesViewModel: NSObject, URLSessionDownloadDelegate {
     func getImage(for urlString: String)-> UIImage? {
         let image = images[urlString]
         if image == nil {
-            //Self is passed in as a delegate for the download. See URLSessionDelegate.
+            // Self is passed in as a delegate for the download. See URLSessionDelegate.
             RedditClient.downloadImage(from: urlString, for: self)
         }
         return image

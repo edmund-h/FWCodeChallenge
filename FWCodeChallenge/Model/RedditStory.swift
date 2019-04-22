@@ -19,7 +19,7 @@ struct RedditStory: Codable {
     
     var imageUrl: String? {
         return thumbnail
-    }
+    } //I thought having this one variable here would be better than making an entire set of coding keys just to have it differently named.
     
     var daysAgo: String {
         let interval =  Calendar.current.dateComponents([.day], from: createdUtc).value(for: .day)

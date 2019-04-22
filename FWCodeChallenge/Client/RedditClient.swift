@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Many people are critical of Swift's function notation. I like it, but even I will admit that Typealiases make them much more readable.
 typealias RedditResponseCompletion = (RedditResponseData?)->()
 
 final class RedditClient {

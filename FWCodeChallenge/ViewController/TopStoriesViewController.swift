@@ -16,7 +16,6 @@ class TopStoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         viewModel = TopStoriesViewModel(delegate: self)
         storyTable.rowHeight = UITableView.automaticDimension
         let name = StoryCell.loveNotification
@@ -37,6 +36,7 @@ class TopStoriesViewController: UIViewController {
             if let _ = error {
                 ac = UIAlertController(title: "Error", message: "Selected action failed.", preferredStyle: .alert)
             }
+            
             let okButton = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 ac.dismiss(animated: true, completion: nil)
             })
@@ -46,19 +46,9 @@ class TopStoriesViewController: UIViewController {
         
         self.present(shareController, animated: true, completion: nil)
     }
-    
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let _ = error {
-            // we got back an error!
-            let ac = UIAlertController(title: "An error occurred", message: "We're sorry, an error occurred with the requested action", preferredStyle: .alert)
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Image Saved!", message: "Successfully saved image!", preferredStyle: .alert)
-            present(ac, animated: true)
-        }
-    }
 }
 
+// I organize VCs' delegate conformances into extensions because it makes code neat and easily accessible through the file browser bar for those who use it (I don't)
 extension TopStoriesViewController: TopStoriesDelegate {
     func gotNewStories(_ redditStories: [RedditStory]) {
         print("gotNewStories")
@@ -72,8 +62,8 @@ extension TopStoriesViewController: TopStoriesDelegate {
             return
         }
         
+        // I iterate through cells to see if a cell with the received image is onscreen. This prevents me from having to reload the entire tableview every time a new image is received.
         for path in cellPaths {
-            //check if visible story got an image
             if viewModel?.stories[path.row].imageUrl == url, let cell =
                 storyTable.cellForRow(at: path) as? StoryCell {
                 cell.storyImage.image = image
@@ -83,6 +73,7 @@ extension TopStoriesViewController: TopStoriesDelegate {
     }
 }
 
+// I understand that this could all be moved into the ViewModel. I felt it would be best to keep it in the VC for now but as the VC increased in size this would be a good option.
 extension TopStoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
